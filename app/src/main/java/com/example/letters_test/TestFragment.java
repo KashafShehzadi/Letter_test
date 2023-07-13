@@ -3,6 +3,8 @@ package com.example.letters_test;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -141,6 +144,12 @@ L=getRandomLetter();
             currentQuestionCount = 0;
             currentShiftAnswers.clear();
             Score= 0;
+            Toast.makeText(requireContext(), "Shift completed", Toast.LENGTH_SHORT).show();
+            FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.frame_layout, new HomeFragment());
+            fragmentTransaction.commit();
+
         }
     }
     private String getRandomLetter() {

@@ -55,8 +55,11 @@ public class ShiftsAdapter extends RecyclerView.Adapter<ShiftsAdapter.ViewHolder
             if (i < shift.size() - 1) {
                 answersBuilder.append("\n");
             }
-        }
 
+        }
+        if (position < shiftList.size() - 1) {
+            answersBuilder.append("\n---------------------------------------------------------");
+        }
         holder.answersTextView.setText(answersBuilder);
     }
 
