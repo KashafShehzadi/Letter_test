@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         MaterialToolbar toolbar = findViewById(R.id.topAppBar);
+        replace(new DefaultFragment());
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.navigation_view);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

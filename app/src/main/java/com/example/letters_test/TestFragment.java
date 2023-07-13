@@ -27,7 +27,7 @@ public class TestFragment extends Fragment {
     private int currentShiftNumber = 1;
     private String answerString = "";
     String L;
-
+    int Score;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -111,6 +111,7 @@ L=getRandomLetter();
         if (expectedAnswer.equals(answerString)) {
             answerTextView.setText("Correct! The letter '"+L+"' is a "+answerString+".");
             currentShiftAnswers.add("Correct!"+"Letter = '"+L+"' "+"is "+answerString);
+            Score=Score+1;
         } else {
             answerTextView.setText("Incorrect! The letter ' "+L+"' is a "+answerString+".");
             currentShiftAnswers.add("InCorrect!"+"Letter = '"+L+"' "+"is not "+expectedAnswer);
@@ -118,6 +119,7 @@ L=getRandomLetter();
         currentQuestionCount++;
 
         if (currentQuestionCount == 5) {
+            currentShiftAnswers.add("Score is "+Score+" out of 5");
             processShiftCompletion();
         }
 
@@ -129,7 +131,7 @@ L=getRandomLetter();
                 letterTextView.setText(L);
                 answerTextView.setText("");
             }
-        }, 5000); // 5000 milliseconds = 5 seconds
+        }, 3000); // 3000 milliseconds = 3 seconds
     }
 
     private void processShiftCompletion() {
@@ -138,6 +140,7 @@ L=getRandomLetter();
             currentShiftNumber++;
             currentQuestionCount = 0;
             currentShiftAnswers.clear();
+            Score= 0;
         }
     }
     private String getRandomLetter() {
